@@ -1,7 +1,7 @@
 import SearchBar from './SearchBar'
 import Filters from './Filters'
 import SortControl from './SortControl'
-import type { SortOrder } from '../types'
+import type { SortOrder } from '../../types'
 
 type Props = {
   name: string
