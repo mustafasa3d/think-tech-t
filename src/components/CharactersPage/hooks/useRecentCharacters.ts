@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
-import type { Character } from '../types'
+import type { Character } from '../../../types'
 
 const KEY = 'recent_characters'
 

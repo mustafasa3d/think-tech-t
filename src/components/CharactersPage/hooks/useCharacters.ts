@@ -1,7 +1,7 @@
 import { useInfiniteQuery } from '@tanstack/react-query'
 import { useMemo } from 'react'
-import { api } from '../lib/api'
-import type { ApiResponse, Character, SortOrder } from '../types'
+import { api } from '../../../lib/api'
+import type { ApiResponse, Character, SortOrder } from '../../../types'
 
 export type CharacterFilters = {
   name?: string

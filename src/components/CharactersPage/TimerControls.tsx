@@ -1,4 +1,4 @@
-import { useRefreshTimer } from '../hooks/useRefreshTimer'
+import { useRefreshTimer } from './hooks/useRefreshTimer'
 
 type Props = {
   initialSeconds?: number

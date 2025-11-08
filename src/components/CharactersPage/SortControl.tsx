@@ -1,4 +1,4 @@
-import type { SortOrder } from '../types'
+import type { SortOrder } from '../../types'
 
 type Props = {
   value: SortOrder

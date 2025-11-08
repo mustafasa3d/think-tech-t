@@ -1,5 +1,5 @@
 import { memo } from 'react'
-import type { Character } from '../types'
+import type { Character } from '../../types'
 import { Link } from 'react-router-dom'
 
 type Props = {
@@ -37,18 +37,4 @@ function Card({ id, image, name, status, species, originName }: Props) {
   )
 }
 
-// function areEqual(prev: Props, next: Props) {
-//   const a = prev.character
-//   const b = next.character
-//   return (
-//     a.id === b.id &&
-//     a.image === b.image &&
-//     a.name === b.name &&
-//     a.status === b.status &&
-//     a.species === b.species &&
-//     (a.origin?.name ?? '') === (b.origin?.name ?? '')
-//   )
-// }
-
-// export default memo(Card, areEqual)
 export default memo(Card)
