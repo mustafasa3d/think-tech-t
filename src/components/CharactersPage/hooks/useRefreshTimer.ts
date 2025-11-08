@@ -45,8 +45,8 @@ export function useRefreshTimer(
   return {
     secondsLeft: left,
     isPaused: paused,
-    pause: () => setPaused(true),
-    resume: () => setPaused(false),
+    pause: useCallback(() => setPaused(true), []),
+    resume: useCallback(() => setPaused(false), []),
     toggle,
     reset,
   };

@@ -1,12 +1,20 @@
+import { useEffect } from 'react'
 import { useRefreshTimer } from './hooks/useRefreshTimer'
 
 type Props = {
   initialSeconds?: number
   onRefresh: () => void
+  startOn?: number
 }
 
-export default function TimerControls({ initialSeconds = 30, onRefresh }: Props) {
-  const { secondsLeft, isPaused, toggle, reset } = useRefreshTimer(initialSeconds, onRefresh)
+export default function TimerControls({ initialSeconds = 30, onRefresh, startOn }: Props) {
+  const { secondsLeft, isPaused, toggle, reset, resume } = useRefreshTimer(initialSeconds, onRefresh)
+  useEffect(() => {
+    if (startOn !== undefined) {
+      reset()
+      resume()
+    }
+  }, [startOn, reset, resume])
   return (
     <div className="flex items-center gap-3">
       <span aria-live="polite" aria-atomic="true" className="text-sm">Refresh in: {secondsLeft}s</span>

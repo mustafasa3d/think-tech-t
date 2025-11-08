@@ -1,4 +1,4 @@
-import { useDeferredValue, useCallback } from 'react'
+import { useDeferredValue, useCallback, useState } from 'react'
 import FiltersSection from '../components/CharactersPage/FiltersSection'
 import TimerControls from '../components/CharactersPage/TimerControls'
 import RecentlyViewed from '../components/CharactersPage/RecentlyViewed'
@@ -31,6 +31,7 @@ export default function CharactersPage() {
 
   const { items: recent } = useRecentCharacters()
   const h = useViewportHeight(240)
+  const [resetAllTick, setResetAllTick] = useState(0)
 
   const rawItems = data || []
   // Defer heavy list updates to keep scrolling smooth while data grows
@@ -56,6 +57,7 @@ export default function CharactersPage() {
     next.delete('species')
     next.delete('sort')
     setSearchParams(next, { replace: true })
+    setResetAllTick((t) => t + 1)
   }, [searchParams, setSearchParams])
 
   return (
@@ -76,9 +78,9 @@ export default function CharactersPage() {
 
       <div className="flex items-center justify-between">
         <TimerControls
-          key={`${debouncedName}|${status}|${species}|${sort}`}
           initialSeconds={30}
           onRefresh={onRefresh}
+          startOn={resetAllTick}
         />
         {error && (
           <div role="status" className="text-sm text-red-600">Failed to load. {navigator.onLine ? 'Please retry.' : 'You appear to be offline.'}</div>
