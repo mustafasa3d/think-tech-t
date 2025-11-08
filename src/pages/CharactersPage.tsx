@@ -33,7 +33,7 @@ export default function CharactersPage() {
   const h = useViewportHeight(240)
 
   const rawItems = data || []
-  // Defer heavy list updates to keep scrolling smooth while data grows
+  // Defer heavy list updates to keep scrolling smooth while data grows  
   const items = useDeferredValue(rawItems)
 
   const onRefresh = useCallback(() => { return refetch() }, [refetch])
@@ -49,6 +49,7 @@ export default function CharactersPage() {
   const onStatusChange = useCallback((v: '' | 'Alive' | 'Dead' | 'Unknown') => updateParam('status', v), [updateParam])
   const onSpeciesChange = useCallback((v: string) => updateParam('species', v), [updateParam])
   const onSortChange = useCallback((v: SortOrder) => updateParam('sort', v === 'any' ? '' : v), [updateParam])
+  
   const onResetFilters = useCallback(() => {
     const next = new URLSearchParams(searchParams)
     next.delete('name')
@@ -96,7 +97,7 @@ export default function CharactersPage() {
           items={items as any[]}
           height={Math.max(300, h)}
           itemSize={130}
-          overscan={6}
+          overscan={4}
           hasNext={hasNext}
           isFetchingNext={isFetchingNext}
           onLoadMore={() => fetchNext()}
